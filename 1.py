@@ -33,7 +33,7 @@ def generate_key_pair():
     prime2 = generate_prime_number()
     n = prime1 * prime2
     phi = (prime1 - 1) * (prime2 - 1)
-    e = 65537  # Common choice for e
+    e = 65537
     d = mod_inverse(e, phi)
     return ((n, e), (n, d))
 
@@ -47,11 +47,9 @@ def decrypt(ciphertext, private_key):
     decrypted_message = ''.join([chr(pow(char, d, n)) for char in ciphertext])
     return decrypted_message
 
-# Example Usage for Task 1
 public_key, private_key = generate_key_pair()
 message = "Hello, RSA!"
 
-# Encryption and Decryption
 encrypted_message = encrypt(message, public_key)
 decrypted_message = decrypt(encrypted_message, private_key)
 print(f"Original Message: {message}")
