@@ -103,7 +103,7 @@ def generate_key_pair():
     prime2 = generate_prime_number()
     n = prime1 * prime2
     phi = (prime1 - 1) * (prime2 - 1)
-    e = 65537  # Common choice for e
+    e = 65537 
     d = mod_inverse(e, phi)
     return ((n, e), (n, d))
 
@@ -122,7 +122,6 @@ def sign_message(message, private_key):
     signature = encrypt(hashed_message, private_key)
     return signature
 
-# Example Usage
 public_key_alice, private_key_alice = generate_key_pair()
 public_key_bob, private_key_bob = generate_key_pair()
 
@@ -136,7 +135,6 @@ blockchain.add_transaction(transaction2, private_key_bob, public_key_alice)
 
 blockchain.add_block(proof=12345)
 
-# Display Blockchain
 for block in blockchain.chain:
     print(f"Hash: {block.hash}")
     print(f"Previous Hash: {block.previous_hash}")
