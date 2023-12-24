@@ -33,7 +33,7 @@ def generate_key_pair():
     prime2 = generate_prime_number()
     n = prime1 * prime2
     phi = (prime1 - 1) * (prime2 - 1)
-    e = 65537  # Common choice for e
+    e = 65537  
     d = mod_inverse(e, phi)
     return ((n, e), (n, d))
 
